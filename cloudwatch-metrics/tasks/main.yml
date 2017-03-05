@@ -1,0 +1,21 @@
+---
+- name: Install required packages
+  action: apt pkg={{ item }} state=installed
+  with_items:
+      - unzip
+      - libwww-perl
+      - libdatetime-perl
+
+- name: Download and extract AWS cloudwatch monitoring scripts
+  unarchive:
+      src: http://aws-cloudwatch.s3.amazonaws.com/downloads/CloudWatchMonitoringScripts-{{ package_version }}.zip
+      dest: "{{ setup_dir }}"
+      remote_src: True
+
+
+- name: Set up monitoring script as cron
+  cron:
+      name: "AWS Cloudwatch metrics"
+      minute: "{{ cron_minute }}"
+      job: "{{ setup_dir }}/aws-scripts-mon/mon-put-instance-data.pl --mem-util --mem-used --mem-avail --swap-util swap-used --disk-path=/ --disk-space-util --disk-space-used --disk-space-avail --from-cron --auto-scaling --memory-units=megabytes --disk-space-units=megabytes"
+...
