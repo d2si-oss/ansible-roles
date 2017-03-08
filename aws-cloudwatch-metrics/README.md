@@ -12,12 +12,14 @@ Here is an policy example that you can associate to an instance profile:
 ```json
 {
   "Statement": [
-    "Action":[
-      "cloudwatch:PutMetricData",
-      "ec2:DescribeTags"
-    ],
-    "Effect": "Allow",
-    "Resource": "*"
+    {
+      "Action": [
+        "cloudwatch:PutMetricData",
+        "ec2:DescribeTags"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
   ]
 }
 ```
