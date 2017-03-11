@@ -1,0 +1,11 @@
+---
+
+# AWS's provided script version.
+package_version: 1.2.1
+
+# Minute section of cron execution, defaults to every minute.
+# Please read http://docs.ansible.com/ansible/cron_module.html for more information on cron module.
+cron_minute: '*'
+
+# Destination on the host.
+setup_dir: /opt

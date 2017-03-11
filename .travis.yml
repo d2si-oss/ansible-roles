@@ -1,0 +1,18 @@
+language: python
+python: "2.7"
+
+before_install:
+  - sudo apt-get update -qq
+
+install:
+  - pip install ansible
+
+  # Add ansible.cfg to pick up roles path.
+  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+
+script:
+  # Check the roles/playbooks syntax.
+  - "ansible-playbook --syntax-check --list-tasks -i aws-cloudwatch-metrics/test/inventory aws-cloudwatch-metrics/test/test.yml"
+
+  # Run playbook
+  - "ansible-playbook -i aws-cloudwatch-metrics/test/inventory aws-cloudwatch-metrics/test/test.yml --connection=local --sudo"

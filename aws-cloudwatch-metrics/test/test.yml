@@ -1,0 +1,11 @@
+---
+- hosts: all
+  remote_user: root
+  roles:
+    - aws-cloudwatch-metrics
+  vars:
+    cron_minute: '*'
+    setup_dir: /opt
+    package_version: 1.2.1
+
+...
