@@ -4,4 +4,4 @@
 
 ## Roles list
 
-- [AWS Cloudwatch metrics] (aws-cloudwatch-metrics/README.md)
+- [AWS Cloudwatch metrics](aws-cloudwatch-metrics/README.md)
